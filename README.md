@@ -46,6 +46,16 @@ set SLACK_BOT_TOKEN=<your-bot-token>
 set SLACK_APP_TOKEN=<your-app-token>
 ```
 
+##### App-level token (Socket Mode)
+
+For local development using Socket Mode you must create an *app-level token* (starts with `xapp-`) and store it as `SLACK_APP_TOKEN`. On the Slack app configuration page under **App-level tokens**, create a new token with at least the `connections:write` scope and copy it into your environment.
+
+- `connections:write` — required for Socket Mode; routes interactions and events over WebSockets.
+- `authorizations:read` — (optional) lets your app view install authorizations for troubleshooting.
+- `app_configurations:write` — (optional, admin-level) used when your app needs to programmatically update its configuration.
+
+Security note: Treat app-level tokens as secrets — never commit them or paste them into public channels. If you accidentally expose a token, revoke it in your Slack App Settings and generate a new one.
+
 Different models from different AI providers are available if the corresponding environment variable is added, as shown in the sections below.
 
 ##### Anthropic Setup

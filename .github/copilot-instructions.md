@@ -12,6 +12,7 @@ Purpose: give an AI coding agent the exact, actionable knowledge needed to be pr
 
 - **High-level architecture (read across these files):**
   - `app.py`: app entrypoint and request routing.
+  - App-level / Socket Mode tokens: Create an `xapp-` token with `connections:write` under your app configuration and set it to `SLACK_APP_TOKEN`. The app needs this to run in Socket Mode and receive events locally. Don't commit this value to source control — treat it like any other secret.
   - `listeners/`: organized by Slack surface — `commands/`, `events/`, `functions/`. Add listeners here for new Slack interactions.
   - `ai/`: core AI integrations.
     - `ai/ai_constants.py` contains project-wide AI constants.

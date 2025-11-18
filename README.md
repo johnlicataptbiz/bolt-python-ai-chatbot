@@ -167,3 +167,26 @@ Navigate to **OAuth & Permissions** in your app configuration and click **Add a 
 ```
 https://3cb89939.ngrok.io/slack/oauth_redirect
 ```
+
+### Updating the app manifest or re-installing the app
+
+If you change `manifest.json` (for example to add a new slash command like `/template-bolty`), Slack needs to know about the change before the command will appear in your workspace. To update the app in your workspace:
+
+- Open your app's configuration on https://api.slack.com/apps and select your app.
+- Go to **Manage Distribution** or **Install App** and click **Reinstall to Workspace** (or **Install** if not already installed). This applies manifest and permission changes.
+
+For local development using socket mode you do not always need to re-install to update the Home tab view, but you will need to re-install to register new slash commands.
+
+### Enabling the provider template for manual testing
+
+The repository includes a `ProviderTemplate` skeleton for onboarding new providers. The template is not exposed in the providers list by default. To enable a dev-only option that selects the example provider in the App Home:
+
+```bash
+# Enable the dev-only example in the App Home
+export ENABLE_NEWPROVIDER=true
+
+# Restart your local server
+python3 app.py
+```
+
+With `ENABLE_NEWPROVIDER=true` set the App Home will include an "Example: default (newprovider)" option you can select for manual testing. Remember to unset this in production or remove the provider template from `ai/providers`.

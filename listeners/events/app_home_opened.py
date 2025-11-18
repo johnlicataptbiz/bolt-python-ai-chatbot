@@ -1,4 +1,5 @@
 from logging import Logger
+import os
 from ai.providers import get_available_providers
 from slack_sdk import WebClient
 from state_store.get_user_state import get_user_state
@@ -47,6 +48,22 @@ def app_home_opened_callback(event: dict, logger: Logger, client: WebClient):
                     "emoji": True,
                 },
                 "value": "null",
+            }
+        )
+
+    # Developer helper: enable the example `newprovider` option in the app
+    # home by setting `ENABLE_NEWPROVIDER=true` in your environment. This
+    # does not expose the provider in `get_available_providers()` by default,
+    # so it's safe for local testing.
+    if os.getenv("ENABLE_NEWPROVIDER", "false").lower() == "true":
+        options.append(
+            {
+                "text": {
+                    "type": "plain_text",
+                    "text": "Example: default (newprovider)",
+                    "emoji": True,
+                },
+                "value": "default newprovider",
             }
         )
 

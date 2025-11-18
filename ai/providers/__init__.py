@@ -29,11 +29,6 @@ def get_available_providers():
         **AnthropicAPI().get_models(),
         **OpenAI_API().get_models(),
         **VertexAPI().get_models(),
-        # ProviderTemplate is a development/template provider. It's enabled
-        # by default here so you can select it from the app home during local
-        # development. Remove or comment out the line below before deploying
-        # to production if you don't want the template available.
-        **ProviderTemplate().get_models(),
     }
 
 

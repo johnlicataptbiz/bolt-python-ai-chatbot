@@ -22,6 +22,12 @@
                 "description": "Interact with Bolty.",
                 "should_escape": false
             }
+            ,
+            {
+                "command": "/template-bolty",
+                "description": "Template command for local testing of Bolty.",
+                "should_escape": false
+            }
         ]
     },
     "oauth_config": {

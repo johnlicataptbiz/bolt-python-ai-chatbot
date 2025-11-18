@@ -6,6 +6,7 @@ from ..ai_constants import DEFAULT_SYSTEM_CONTENT
 from .anthropic import AnthropicAPI
 from .openai import OpenAI_API
 from .vertexai import VertexAPI
+from .provider_template import ProviderTemplate
 
 """
 New AI providers must be added below.
@@ -28,6 +29,10 @@ def get_available_providers():
         **AnthropicAPI().get_models(),
         **OpenAI_API().get_models(),
         **VertexAPI().get_models(),
+        # **ProviderTemplate() is a development/template provider. If you
+        # want to enable it for testing, uncomment the line below. It's left
+        # commented to avoid accidental use in production.
+        # **ProviderTemplate().get_models(),
     }
 
 

@@ -23,6 +23,7 @@ Purpose: give an AI coding agent the exact, actionable knowledge needed to be pr
 
 - **Common, repo-specific patterns you must follow:**
   - Providers implement the `BaseProvider`-style interface in `ai/providers/base_provider.py` and are exposed via `ai/providers/__init__.py` helper utilities. When adding a provider: create `ai/providers/your_provider.py`, implement the interface, then import/register it in `ai/providers/__init__.py`.
+  - Provider template: `ai/providers/provider_template.py` shows a minimal provider. It uses `NEW_PROVIDER_API_KEY` as the env var. To make the template available in the running app, ensure `ai/providers/__init__.py` includes `**ProviderTemplate().get_models()` in `get_available_providers()` and maps the provider name `newprovider` in `_get_provider()`.
   - Listener files are grouped by Slack surface. Put new command handlers in `listeners/commands/`, event handlers in `listeners/events/`, and workflow/functions in `listeners/functions/`.
   - Persistent user settings live as per-user JSON files in `data/`. Read/write via `state_store/file_state_store.py`. The user object uses the `UserIdentity` class from `state_store/user_identity.py` (fields: `user_id`, `provider`, `model`).
 
